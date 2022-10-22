@@ -42,4 +42,10 @@ class Team
     end
     @details["total_value"] = total_value
   end
+
+  def average_cost_of_player
+    average_cost = (total_value / player_count).to_s
+    average_cost.gsub!(/\B(?=(...)*\b)/, ',')
+    "$#{average_cost}"
+  end
 end
