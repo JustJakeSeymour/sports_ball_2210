@@ -1,5 +1,6 @@
 require 'rspec'
 require './lib/player'
+require 'pry'
 
 RSpec.describe Player do
   it 'exists' do
@@ -36,5 +37,18 @@ RSpec.describe Player do
     player = Player.new("Michael Palledorous" , 1000000, 36)
 
     expect(player.total_cost).to eq(36000000)
+  end
+
+  it 'does not start with a nickname' do
+    player = Player.new("Michael Palledorous" , 1000000, 36)
+
+    expect(player.nickname).to be nil    
+  end
+
+  it 'can get a nickname' do
+    player = Player.new("Michael Palledorous" , 1000000, 36)
+    player.set_nickname!("Squints")
+
+    expect(player.nickname).to eq("Squints")
   end
 end
