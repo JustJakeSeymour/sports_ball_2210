@@ -67,7 +67,7 @@ RSpec.describe Team do
     team.add_player(player_2)
     team.add_player(player_3)
     team.add_player(player_4)
-
+    
     expect(team.long_term_players).to eq [player_1, player_3]
   end
 
@@ -85,6 +85,7 @@ RSpec.describe Team do
 
     expect(team.short_term_players).to eq [player_2, player_4]
   end
+
   it 'can calculate total value' do
     team = Team.new("Dodgers", "Los Angeles")
     player_1 = Player.new("Michael Palledorous", 1000000, 36)
@@ -100,7 +101,7 @@ RSpec.describe Team do
     expect(team.total_value).to eq 85200000
   end
 
-  it 'gives team details' do
+  it 'gives has a details hash with total value and player count' do
     team = Team.new("Dodgers", "Los Angeles")
     player_1 = Player.new("Michael Palledorous", 1000000, 36)
     player_2 = Player.new("Kenny Denunez", 500000, 24)
@@ -112,5 +113,10 @@ RSpec.describe Team do
     team.add_player(player_3)
     team.add_player(player_4)
     
+    team.total_value
+    team.player_count
+
+    expect(team.details["total_value"]).to eq 85200000
+    expect(team.details["player_count"]).to eq 4
   end
 end
